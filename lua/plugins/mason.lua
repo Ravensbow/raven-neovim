@@ -7,7 +7,6 @@ return {
 		},
 		ensure_installed = {
 			"roslyn",
-			"rzls",
 		},
 	}
 }
