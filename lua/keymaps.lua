@@ -24,20 +24,54 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 --Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'find_files' }) end, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'git_files' }) end, { desc = 'Telescope find git files' })
-vim.keymap.set('n', '<leader>/', function()
-	require('modules.telescopePickers').prettyGrepPicker({ picker = 'grep_string', options = { search = vim.fn.input("Grep > ") } })
-end, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>:', builtin.command_history, { desc = 'Telescope command history' })
-vim.keymap.set('n', '<leader>fr', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'oldfiles' }) end, { desc = 'Telescope recent files' })
-vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status' })
-vim.keymap.set('n', '<leader>gS', builtin.git_stash, { desc = 'Telescope git stash' })
-vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Telescope git commits' })
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Telescope git branches' })
-vim.keymap.set('n', '<leader>fall', builtin.builtin, { desc = 'Telescope all builtin pickers' })
+-- local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>ff', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'find_files' }) end, { desc = 'Telescope find files' })
+-- vim.keymap.set('n', '<leader>fg', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'git_files' }) end, { desc = 'Telescope find git files' })
+-- vim.keymap.set('n', '<leader>/', function()
+-- 	require('modules.telescopePickers').prettyGrepPicker({ picker = 'grep_string', options = { search = vim.fn.input("Grep > ") } })
+-- end, { desc = 'Telescope find files' })
+-- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+-- vim.keymap.set('n', '<leader>:', builtin.command_history, { desc = 'Telescope command history' })
+-- vim.keymap.set('n', '<leader>fr', function() require('modules.telescopePickers').prettyFilesPicker({ picker = 'oldfiles' }) end, { desc = 'Telescope recent files' })
+-- vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status' })
+-- vim.keymap.set('n', '<leader>gS', builtin.git_stash, { desc = 'Telescope git stash' })
+-- vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Telescope git commits' })
+-- vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Telescope git branches' })
+-- vim.keymap.set('n', '<leader>fall', builtin.builtin, { desc = 'Telescope all builtin pickers' })
+
+-- Snacks Picker Keymaps
+vim.keymap.set('n', '<leader>ff', function() Snacks.picker.files() end, { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>fg', function() Snacks.picker.git_files() end, { desc = 'Find Git Files' })
+
+-- Search/Grep (Replacing your custom Grep > input)
+vim.keymap.set('n', '<leader>/', function() Snacks.picker.grep() end, { desc = 'Grep Search' })
+
+-- Standard Pickers
+vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = 'Buffers' })
+vim.keymap.set('n', '<leader>:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
+vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent() end, { desc = 'Recent Files' })
+
+-- Git Pickers
+vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
+vim.keymap.set('n', '<leader>gS', function() Snacks.picker.git_stash() end, { desc = 'Git Stash' })
+vim.keymap.set('n', '<leader>gc', function() Snacks.picker.git_log() end, { desc = 'Git Log (Commits)' })
+vim.keymap.set('n', '<leader>gb', function() Snacks.picker.git_branches() end, { desc = 'Git Branches' })
+
+-- All Pickers (Similar to builtin.builtin)
+vim.keymap.set('n', '<leader>fall', function() Snacks.picker.pickers() end, { desc = 'All Snacks Pickers' })
+
+-- Adding your requested LSP Symbols map
+vim.keymap.set('n', '<leader>ss', function() Snacks.picker.lsp_symbols() end, { desc = 'LSP Symbols' })
+
+-- LSP Navigation
+vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
+vim.keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, { desc = 'Show References', nowait = true })
+vim.keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation' })
+vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto Type Definition' })
+
+-- Symbols & Diagnostics
+vim.keymap.set('n', '<leader>ss', function() Snacks.picker.lsp_symbols() end, { desc = 'LSP Document Symbols' })
+vim.keymap.set('n', '<leader>xx', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
 
 -- LSP
 
@@ -88,11 +122,12 @@ vim.keymap.set('n', '[[' , function() vim.diagnostic.jump({count = -1}) end, opt
 opts.desc = "Prev Diagnostic/Reference (Alt+p)"
 vim.keymap.set('n', '<a-p>', function() vim.diagnostic.jump({count = -1}) end, opts)
 vim.keymap.set('i', '<C-Space>', '<C-x><C-o>')
-vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = 'Goto definition', })
-vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = 'Show all references' })
-vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = 'Goto implementation' })
-vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { desc = 'Goto type definition' })
-vim.keymap.set('n', '<leader>xx', builtin.diagnostics, { desc = 'Diagnostics' })
+-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = 'Goto definition', })
+-- vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = 'Show all references' })
+-- vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = 'Goto implementation' })
+-- vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { desc = 'Goto type definition' })
+-- vim.keymap.set('n', '<leader>xx', builtin.diagnostics, { desc = 'Diagnostics' })
+-- vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = 'LSP Document Symbols' })
 
 --Windows
 -- Increase window height
