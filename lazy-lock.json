@@ -19,6 +19,9 @@
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "81e676d3203c9eb6e4c0ccf1eba1679296ef923f" },
+  "nvim-dap": { "branch": "master", "commit": "cdfd55a133f63228c55f91378f12908cb2a78ded" },
+  "nvim-dap-ui": { "branch": "master", "commit": "cf91d5e2d07c72903d052f5207511bf7ecdb7122" },
+  "nvim-dap-virtual-text": { "branch": "master", "commit": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
   "nvim-lspconfig": { "branch": "master", "commit": "5eeb45c8c469b84777a5bd8796b698c8a1c780a7" },
   "nvim-navic": { "branch": "master", "commit": "7d914a39a1ef8f4e22c2c4381abeef7c556f5a13" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
@@ -35,5 +38,6 @@
   "telescope.nvim": { "branch": "master", "commit": "e709d31454ee6e6157f0537f861f797bd44c0bad" },
   "thorn.nvim": { "branch": "main", "commit": "c328f3f44f86addf74fac79eb0cf5659571a8aaa" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
-  "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" }
+  "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
+  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

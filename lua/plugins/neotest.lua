@@ -13,5 +13,13 @@ return {
 			  require("neotest-vstest")
 		  }
 	  })
-  end
+  end,
+  keys = {
+	  {"<leader>tr", function() require("neotest").run.run() end, desc = "Run nearest test"},
+	  {"<leader>tra", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run all file tests"},
+	  {"<leader>tp", function() require("neotest").output_panel.toggle() end, desc = "Toggle test panel"},
+	  {"<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle summary panel"},
+	  --TODO: Add debug versions for running
+	  --TODO: Add jumping between failed tests
+  }
 }
