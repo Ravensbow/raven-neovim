@@ -15,6 +15,8 @@ vim.opt.tabstop = 4
 
 vim.api.nvim_set_hl(0, "@lsp.type.extensionMethod.cs", { link = "@function" })
 vim.api.nvim_set_hl(0, "@lsp.type.recordClass.cs", { link = "@type" })
+-- Standard link
+vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
 
 --Folding
 vim.opt.foldmethod = "expr"
