@@ -48,31 +48,6 @@ return {
 
 		-- Additional roslyn extensions (for example Roslynator/ Razor)
 		-- The path is expected to be .dll file
-		extensions = {
-			razor = {
-				enabled = true,
-				config = function()
-					local razor_extension_path = require("roslyn.utils").find_razor_extension_path()
-					if razor_extension_path == nil then
-						return {
-							path = nil,
-						}
-					end
-
-					return {
-						path = vim.fs.joinpath(razor_extension_path, "Microsoft.VisualStudioCode.RazorExtension.dll"),
-						args = {
-							"--razorSourceGenerator="
-							.. vim.fs.joinpath(razor_extension_path, "Microsoft.CodeAnalysis.Razor.Compiler.dll"),
-							"--razorDesignTimePath=" .. vim.fs.joinpath(
-								razor_extension_path,
-								"Targets",
-								"Microsoft.NET.Sdk.Razor.DesignTime.targets"
-							),
-						},
-					}
-				end,
-			},
-		},
+		extensions = {},
 	}
 }
