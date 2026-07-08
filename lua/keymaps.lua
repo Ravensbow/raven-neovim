@@ -110,6 +110,14 @@ vim.keymap.set('n', '[[', function() vim.diagnostic.jump({ count = -1 }) end, op
 opts.desc = "Prev Diagnostic/Reference (Alt+p)"
 vim.keymap.set('n', '<a-p>', function() vim.diagnostic.jump({ count = -1 }) end, opts)
 vim.keymap.set('i', '<C-Space>', '<C-x><C-o>')
+-- For rust
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "rust",
+	callback = function()
+		vim.keymap.set('n', ']]', function() vim.diagnostic.jump({ count = 1 }) end, { buffer = true })
+		vim.keymap.set('n', '[[', function() vim.diagnostic.jump({ count = -1 }) end, { buffer = true })
+	end,
+})
 
 --Windows
 -- Increase window height

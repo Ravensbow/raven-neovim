@@ -14,11 +14,12 @@ return {
 		},
 		{
 			"fredrikaverpil/neotest-golang",
-			version = "*",                                                -- Optional, but recommended; track releases
+			version = "*",                                                  -- Optional, but recommended; track releases
 			build = function()
 				vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
 			end,
-		}
+		},
+		"rouge8/neotest-rust",
 	},
 	config = function()
 		local config = {
@@ -28,6 +29,7 @@ return {
 			adapters = {
 				require("neotest-vstest"),
 				require("neotest-golang")(config),
+				require("neotest-rust"),
 			}
 		})
 	end,

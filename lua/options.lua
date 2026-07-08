@@ -54,3 +54,32 @@ vim.api.nvim_create_user_command('RoslynLoadAllDiagnostics', function()
 	end
 	vim.notify('Loaded ' .. #files .. ' C# files for diagnostics')
 end, {})
+
+-- LOOK
+local bg_dark = "#233228"
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "Folded", { bg = "none" })
+vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+vim.api.nvim_set_hl(0, "MsgArea", { bg = "none" })
+vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
+vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#3e6b4d", fg = "#e0def4" })
+
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = bg_dark })
+vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = bg_dark })
+vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = bg_dark })
+
+require("notify").setup({
+	background_colour = "#000000",
+})
